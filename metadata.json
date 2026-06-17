@@ -1,0 +1,6 @@
+{
+  "name": "Nagara HQ",
+  "description": "A luxury web design and AI automation agency website targeting small business owners.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

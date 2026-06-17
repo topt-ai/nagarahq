@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #0A0A0A;
+  --color-brand-surface: #111111;
+  --color-brand-border: #1E1E1E;
+  --color-brand-primary: #F5F0EE;
+  --color-brand-muted: #6B6B6B;
+  --color-brand-accent: #E8B4B8;
+  --color-brand-hover: #C9717A;
+  
+  --font-display: "DM Serif Display", serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-brand: "Shippori Mincho", "DM Serif Display", serif;
+}
+
+body {
+  background-color: var(--color-brand-bg);
+  color: var(--color-brand-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-brand-accent);
+  color: var(--color-brand-bg);
+}
+
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Base custom classes to match design intent */
+.text-balance {
+  text-wrap: balance;
+}
+
+.GSAP-reveal {
+  opacity: 0;
+}
+
+/* Status widget — only visible above 1100px */
+.status-widget {
+  display: none;
+}
+@media (min-width: 1101px) {
+  .status-widget {
+    display: block;
+  }
+}
+
+@keyframes statusDotPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.15);
+  }
+}
+
+.status-dot {
+  animation: statusDotPulse 2s infinite ease-in-out;
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+}
+
+/* Cherry blossom tinted illustration wrapper for the Contact section */
+.illustration-tint {
+  background-color: #E8B4B8;
+}
+.illustration-tint img {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+}
+
+@media (max-width: 767px) {
+  .signature-illustration {
+    display: none;
+  }
+}
+
+/* Hero particles — only above 900px */
+.hero-particles {
+  display: none;
+}
+@media (min-width: 901px) {
+  .hero-particles {
+    display: block;
+  }
+}
+
+/* Ambient drift — peak opacity capped at 0.25 so particles read as dust, not decoration. */
+@keyframes drift-a {
+  0%   { transform: translate(0px, 0px); opacity: 0.08; }
+  33%  { transform: translate(12px, -28px); opacity: 0.22; }
+  66%  { transform: translate(-8px, -52px); opacity: 0.14; }
+  100% { transform: translate(4px, -80px); opacity: 0; }
+}
+@keyframes drift-b {
+  0%   { transform: translate(0px, 0px); opacity: 0.06; }
+  50%  { transform: translate(-15px, -35px); opacity: 0.20; }
+  100% { transform: translate(8px, -70px); opacity: 0; }
+}
+@keyframes drift-c {
+  0%   { transform: translate(0px, 0px) scale(1); opacity: 0.12; }
+  40%  { transform: translate(18px, -25px) scale(1.1); opacity: 0.25; }
+  100% { transform: translate(-5px, -65px) scale(0.8); opacity: 0; }
+}
+@keyframes drift-d {
+  0%   { transform: translate(0px, 0px); opacity: 0.05; }
+  60%  { transform: translate(-20px, -40px); opacity: 0.18; }
+  100% { transform: translate(10px, -90px); opacity: 0; }
+}
