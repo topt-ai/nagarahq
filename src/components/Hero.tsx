@@ -94,7 +94,7 @@ export function Hero() {
       <div
         ref={illustrationRef}
         className="hero-illustration hidden lg:block absolute bottom-0 right-0 opacity-0 pointer-events-none"
-        style={{ width: '42%', height: '100%', overflow: 'visible' }}
+        style={{ width: '42%', height: '100%', overflow: 'visible', background: 'transparent' }}
         aria-hidden="true"
       >
         <div
@@ -105,7 +105,8 @@ export function Hero() {
             width: '105%',
             maxWidth: '680px',
             display: 'inline-block',
-            isolation: 'isolate',
+            overflow: 'hidden',
+            background: 'transparent',
           }}
         >
           <img
@@ -114,21 +115,23 @@ export function Hero() {
             style={{
               display: 'block',
               width: '100%',
+              background: 'transparent',
+              mixBlendMode: 'normal',
               clipPath: 'url(#hero-reveal-clip)',
               WebkitClipPath: 'url(#hero-reveal-clip)',
               WebkitMaskImage: 'linear-gradient(to bottom, black 65%, transparent 100%)',
               maskImage: 'linear-gradient(to bottom, black 65%, transparent 100%)',
             }}
           />
-          {/* Cherry-blossom tint — keeps backdrop lightness, applies pink hue.
-              Over the black hero bg the result stays black; only the character tints. */}
+          {/* Subtle cherry-blossom cast. Multiply against the black hero bg
+              keeps transparent areas black; only the character tints rose. */}
           <div
             style={{
               position: 'absolute',
               inset: 0,
               backgroundColor: '#DDA9AD',
-              mixBlendMode: 'color',
-              opacity: 0.35,
+              mixBlendMode: 'multiply',
+              opacity: 0.15,
               pointerEvents: 'none',
               clipPath: 'url(#hero-reveal-clip)',
               WebkitClipPath: 'url(#hero-reveal-clip)',
